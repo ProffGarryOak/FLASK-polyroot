@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polynomial Roots Finder</title>
+    <style>
+      body {
+        justify-content: center;
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+      }
+
+      h2 {
+        margin-top: 20px;
+        color: #333;
+      }
+
+      p {
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Polynomial Roots Finder</h1>
+
+    <form method="post" action="/">
+      <label for="coefficients">Enter coefficients (comma-separated):</label>
+      <input type="text" id="coefficients" name="coefficients" required />
+      <button type="submit">Find Roots</button>
+    </form>
+
+    {% if Equation %}
+    <h2>Equation:</h2>
+    <p>{{ Equation }}</p>
+    {% endif %} {% if roots %}
+    <h2>Roots:</h2>
+    <p>{{ roots | safe }}</p>
+    {% endif %}
+  </body>
+</html>
