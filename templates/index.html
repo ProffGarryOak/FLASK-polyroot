@@ -7,23 +7,59 @@
     <title>Polynomial Roots Finder</title>
     <style>
       body {
-        justify-content: center;
         font-family: Arial, sans-serif;
-        margin: 20px;
+        margin: 0;
+        padding: 0;
+
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+      }
+
+      .container {
+        max-width: auto;
+        text-align: center;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #daeee9;
+        border-radius: 10px;
+      }
+      .vidhi {
+        margin: 1.5% 1.5%;
+        font-family: sans-serif;
+        text-align: center;
+      }
+      .gyan {
+        font-family: sans-serif;
+        text-align: center;
+        align-items: center;
+        max-width: 75%;
+
+        margin: 0 auto;
+      }
+      .topbar {
+        background-color: #04162e;
+        padding: 0.5%;
+        text-align: center;
+        border-radius: 1%;
       }
 
       h1 {
-        color: #333;
+        color: #05c298;
+        font-family: sans-serif;
       }
 
       form {
-        margin-top: 20px;
+        margin-top: 0.5%;
+        padding-left: 15%;
+        padding-right: 15%;
+        text-align: center;
       }
 
       label {
         display: block;
         margin-bottom: 5px;
-        color: #555;
+        color: #ccc;
       }
 
       input {
@@ -34,38 +70,108 @@
       }
 
       button {
-        background-color: #4caf50;
-        color: white;
+        background-color: #04162e;
+        color: #05c298;
         padding: 10px;
-        border: none;
+        border-radius: 15%;
         cursor: pointer;
       }
 
       h2 {
         margin-top: 20px;
-        color: #333;
+        color: #04162e;
       }
 
       p {
-        color: #555;
+        color: #04162e;
+        font-family: sans-serif;
+      }
+      .litems {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .litems li {
+        margin: 0 10px;
+      }
+      .logo {
+        max-width: 100%; /* Set maximum width to 100% of the container */
+        max-height: 66px; /* Set maximum height as needed */
+        width: auto; /* Make the image responsive */
+        height: auto;
+        border-radius: 50%;
+      }
+      .footer {
+        background-color: #444;
+        padding: 10px;
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <h1>Polynomial Roots Finder</h1>
+    <div class="topbar">
+      <ul class="litems">
+        <li>
+          <img
+            src="{{ url_for('static', filename='logo.png') }}"
+            alt="logo"
+            class="logo"
+          />
+        </li>
+        <li><h1>Polynomial Roots Finder</h1></li>
+      </ul>
+    </div>
+    <div class="vidhi">
+      <b>Insturctions:</b>Use this polynomial equation calculator to find the
+      roots of any equation.<br />Type in the coefficients of polynomial
+      equation you want to solve. <br />(Ex: To find roots of x²+3x+2=0, just
+      typein 1,3,2. )
+    </div>
+    <div class="container">
+      <form method="post" action="/">
+        <input
+          type="text"
+          id="coefficients"
+          placeholder="Enter coefficients(2,3,4,5)"
+          name="coefficients"
+          required
+        />
+        <button type="submit">Find Roots</button>
+      </form>
 
-    <form method="post" action="/">
-      <label for="coefficients">Enter coefficients (comma-separated):</label>
-      <input type="text" id="coefficients" name="coefficients" required />
-      <button type="submit">Find Roots</button>
-    </form>
+      {% if Equation %}
+      <h2>Equation:</h2>
+      <p>{{ Equation }}</p>
+      {% endif %} {% if roots %}
+      <h2>Roots:</h2>
+      <p>{{ roots | safe }}</p>
+      {% endif %}
+    </div>
+    <div class="gyan">
+      <h3>Polynomial Equation Calculator</h3>
+      A polynomial equation is a type of algebra equation, and one of the
+      simplest kinds, barred from linear equations. The fact that polynomial
+      equations are simple, does not mean they are EASY to solve, and in fact,
+      at times they take quite a long to be solved, if they can be solved at
+      all.<br />
+      <h3>How can I solve polynomial?</h3>
 
-    {% if Equation %}
-    <h2>Equation:</h2>
-    <p>{{ Equation }}</p>
-    {% endif %} {% if roots %}
-    <h2>Roots:</h2>
-    <p>{{ roots | safe }}</p>
-    {% endif %}
+      Though polynomials are simple expressions, solving polynomial equations
+      can be really complicated, especially for polynomial degree greater than
+      2. For quadratic equations, the solutions are simply found using a
+      quadratic formula. Sure, you may think it is hard to memorize the
+      formulas, but at least there is a formula. For cubic (degree 3) and
+      quartic (degree 4), there are some very clever equations to be used, but
+      they are by no means easy to use or remember. For poly equations of degree
+      5 and above there is no formula. That does not mean we cannot find the
+      polynomial roots for those equations , but we don't have a formula for it,
+      and a formula does not exist (if you are curious about that, such
+      conclusions was one of the main breakthroughs of modern mathematics in the
+      late 18th century
+    </div>
+
+    <div class="footer">© 2024 Polynomial Roots Finder</div>
   </body>
 </html>

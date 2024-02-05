@@ -9,6 +9,8 @@ def format_polynomial(coefficients):
     degree = len(coefficients) - 1
 
     def term(coef, exp):
+        if int(coef) == coef:
+            coef = int(coef)
         if exp == 0:
             return str(coef)
         elif exp == 1:
