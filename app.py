@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import numpy as np
-from scipy.optimize import root_scalar
 
 app = Flask(__name__)
 
