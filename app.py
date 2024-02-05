@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import numpy as np
-from scipy.optimize import root_scalar
 
 app = Flask(__name__)
 
@@ -106,4 +105,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000)
